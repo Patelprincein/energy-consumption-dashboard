@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnergyFlow Dynamics | AI Analytics</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for beautiful graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="glass-header">
+        <div class="logo-container">
+            <div class="logo-icon"></div>
+            <h1>EnergyFlow <span>Dynamics</span></h1>
+        </div>
+        <nav>
+            <a href="#" class="active">Analytics Hub</a>
+            <a href="#">Documentation</a>
+            <a href="#">Settings</a>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="upload-section glass-card" id="upload-box">
+            <h2>Analyze Your Energy Datasets</h2>
+            <p>Upload your raw hourly consumption CSV files. Our engine cleans the chaos, interpolates gaps, and extracts deep consumption models instantly.</p>
+            
+            <div class="upload-area" id="drop-zone">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <h3>Drag & Drop your CSV file</h3>
+                <p>or click to browse</p>
+                <input type="file" id="file-input" accept=".csv" hidden>
+            </div>
+            <button class="btn-primary" id="analyze-btn" disabled>Generate Insights</button>
+            <div class="loader" id="loader" style="display: none;"></div>
+        </section>
+
+        <!-- Hidden initially, shown after upload -->
+        <section class="results-container" id="results-container" style="display: none;">
+            
+            <div class="kpi-grid">
+                <div class="kpi-card glass-card">
+                    <h4>Total Records Analyzed</h4>
+                    <h2 id="kpi-records">--</h2>
+                    <div class="trend positive">✔ Cleaned & Processed</div>
+                </div>
+                <div class="kpi-card glass-card">
+                    <h4>Identified Potential Peaks</h4>
+                    <h2 id="kpi-peaks">--</h2>
+                    <div class="trend warning">Requires Load Shifting</div>
+                </div>
+                <div class="kpi-card glass-card">
+                    <h4>Data Health Score</h4>
+                    <h2 id="kpi-score">99.8%</h2>
+                    <div class="trend positive">Interpolated successfully</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container glass-card flow-chart">
+                    <h3>Seasonal Demand Curve</h3>
+                    <p class="subtitle">Monthly average load (MW). Identifies long-term seasonal spikes.</p>
+                    <canvas id="seasonalChart"></canvas>
+                </div>
+                
+                <div class="chart-container glass-card top-peaks">
+                    <h3>Top 10 Extreme Consumption Peaks</h3>
+                    <p class="subtitle">Highest recorded hourly loads across the dataset.</p>
+                    <canvas id="peaksChart"></canvas>
+                </div>
+            </div>
+
+            <div class="insights-panel glass-card">
+                <h3>⚡ AI Efficiency Insights</h3>
+                <div class="insight-list" id="insight-list">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
